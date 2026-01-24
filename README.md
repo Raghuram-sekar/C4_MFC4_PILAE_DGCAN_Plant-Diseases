@@ -9,19 +9,19 @@
 ## 📋 Table of Contents
 
 - [Overview](#-overview)
-- [Key Features](#key-features)
-- [Methodology](#methodology)
-- [Dataset](#dataset)
-- [Architecture](#architecture)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Results](#results)
-- [Requirements](#requirements)
-- [Contributing](#contributing)
-- [References](#references)
-- [License](#license)
-- [Authors](#authors)
+- [Key Features](#-key-features)
+- [Methodology](#-methodology)
+- [Dataset](#-dataset)
+- [Architecture](#-architecture)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Project Structure](#-project-structure)
+- [Results](#-results)
+- [Requirements](#-requirements)
+- [Contributing](#-contributing)
+- [References](#-references)
+- [License](#-license)
+- [Authors](#-authors)
 
 ## 🎯 Overview
 
