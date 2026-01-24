@@ -8,7 +8,7 @@
 
 ## 📋 Table of Contents
 
-- [Overview](#overview)
+- [Overview](#-overview)
 - [Key Features](#key-features)
 - [Methodology](#methodology)
 - [Dataset](#dataset)
