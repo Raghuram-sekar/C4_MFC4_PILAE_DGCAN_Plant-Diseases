@@ -12,7 +12,7 @@
 - [Key Features](#-key-features)
 - [Methodology](#-methodology)
 - [Dataset](#-dataset)
-- [Architecture](architecture)
+- [Architecture](#architecture)
 - [Installation](#-installation)
 - [Usage](#-usage)
 - [Project Structure](#-project-structure)
@@ -148,7 +148,7 @@ Traditional plant disease classification systems suffer from:
 - Maximum: 5,507 images (preserved real data)
 - **Synthetic Generated**: ~14,000 images for minority classes
 
-##  Architecture
+## Architecture
 
 ### Conditional Generator
 
