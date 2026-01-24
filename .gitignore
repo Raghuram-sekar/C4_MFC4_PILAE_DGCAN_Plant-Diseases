@@ -1,0 +1,22 @@
+# Dataset files
+Dataset/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Model training outputs
+*.log
+*.pkl
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
