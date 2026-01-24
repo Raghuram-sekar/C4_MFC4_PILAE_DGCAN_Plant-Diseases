@@ -115,7 +115,7 @@ Traditional plant disease classification systems suffer from:
 
 ### PlantVillage Dataset
 
-- **Source**: [PlantVillage Dataset](https://github.com/spMohanty/PlantVillage-Dataset)
+- **Source**: [PlantVillage Dataset](https://www.kaggle.com/datasets/abdallahalidev/plantvillage-dataset/)
 - **Total Images**: 54,305 RGB images
 - **Image Size**: 64×64 pixels (resized)
 - **Classes**: 38 plant disease categories
@@ -209,13 +209,12 @@ Output: Class Label (0-37)
 - Python 3.8 or higher
 - CUDA-compatible GPU (recommended) or CPU
 - 8GB+ RAM
-- 20GB+ free disk space
 
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/plant-disease-classification.git
-cd plant-disease-classification
+git clone https://github.com/Raghuram-sekar/C4_MFC4_PILAE_DGCAN_Plant-Diseases.git
+cd C4_MFC4_PILAE_DGCAN_Plant-Diseases
 ```
 
 ### Step 2: Create Virtual Environment
@@ -238,7 +237,7 @@ pip install -r requirements.txt
 
 ### Step 4: Download Dataset
 
-1. Download PlantVillage dataset from [Kaggle](https://www.kaggle.com/datasets/emmarex/plantdisease) or [GitHub](https://github.com/spMohanty/PlantVillage-Dataset)
+1. Download PlantVillage dataset from [Kaggle](https://www.kaggle.com/datasets/abdallahalidev/plantvillage-dataset/) or [GitHub](https://github.com/spMohanty/PlantVillage-Dataset)
 2. Extract to `Dataset/color/` directory
 3. Ensure folder structure matches:
    ```
