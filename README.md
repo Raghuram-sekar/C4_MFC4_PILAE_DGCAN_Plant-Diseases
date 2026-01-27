@@ -526,11 +526,6 @@ We welcome contributions! Here's how you can help:
    - Model quantization
    - ONNX export for deployment
 
-4. **UI/Deployment**
-   - Web interface (Streamlit/Gradio)
-   - Mobile app (Flutter/React Native)
-   - REST API (FastAPI)
-
 ### How to Contribute
 
 1. Fork the repository
