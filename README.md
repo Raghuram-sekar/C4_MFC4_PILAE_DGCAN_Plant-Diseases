@@ -8,20 +8,24 @@
 
 ## 📋 Table of Contents
 
-- [Overview](#overview)
-- [Key Features](#key-features)
-- [Methodology](#methodology)
-- [Dataset](#dataset)
+- [Overview](#-overview)
+- [Team](#-team)
+- [Project Outline](#-project-outline)
+- [Key Features](#-key-features)
+- [Methodology](#-methodology)
+- [Dataset](#-dataset)
 - [Architecture](#architecture)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Results](#results)
-- [Requirements](#requirements)
-- [Contributing](#contributing)
-- [References](#references)
-- [License](#license)
-- [Authors](#authors)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Project Structure](#-project-structure)
+- [Results](#-results)
+- [Updates](#-updates)
+- [Challenges / Issues Faced](#️-challenges--issues-faced)
+- [Future Plans](#-future-plans)
+- [Requirements](#-requirements)
+- [Contributing](#-contributing)
+- [References](#-references)
+- [License](#-license)
 
 ## 🎯 Overview
 
@@ -29,17 +33,60 @@ This project implements a novel approach to plant disease classification that ad
 
 ### Problem Statement
 
-Traditional plant disease classification systems suffer from:
-- **Class Imbalance**: Some disease classes have 5000+ images while others have only 150
-- **Limited Training Data**: Minority classes lead to biased models
-- **Computational Complexity**: Traditional augmentation methods are inefficient
+Plant disease detection is critical for ensuring crop quality and quantity in agricultural production. Early recognition and treatment of plant diseases can prevent widespread damage and economic losses. However, current automated plant disease classification systems face significant challenges:
+
+1. **Severe Class Imbalance**: Real-world datasets exhibit extreme imbalance ratios (up to 36:1), where some disease categories contain 5,500+ samples while minority classes have as few as 152 images. This imbalance causes classifiers to be biased toward majority classes, resulting in poor recognition of rare but critical diseases.
+
+2. **Data Scarcity**: Collecting and manually labeling plant disease images by agricultural experts is time-consuming and costly. Traditional machine learning approaches that rely on hand-crafted features require substantial labeled datasets, which are often unavailable for minority disease classes.
+
+3. **Computational Inefficiency**: Conventional data augmentation techniques (rotation, flipping, scaling) produce limited diversity and fail to capture class-specific disease characteristics. Deep learning methods using backpropagation require extensive training time and are prone to overfitting on imbalanced datasets.
+
+4. **Generalization Issues**: Models trained on imbalanced datasets perform poorly on test images from different environmental conditions and struggle to generalize across diverse plant disease manifestations.
 
 ### Our Solution
 
-1. **Conditional DCGAN**: Generate class-specific synthetic images for minority classes
-2. **Dataset Balancing**: Ensure minimum 1000 samples per class
-3. **PILAE Classifier**: Fast analytical learning using discriminator-extracted features
-4. **K-Fold Validation**: Robust evaluation to ensure no overfitting
+To address these challenges, we propose a hybrid deep learning framework that combines **Conditional Deep Convolutional Generative Adversarial Networks (cDCGAN)** for intelligent data augmentation with **Pseudoinverse Learning Autoencoder (PILAE)** for rapid, efficient classification:
+
+#### 1. **Conditional DCGAN for Targeted Synthetic Data Generation**
+   - **Architecture**: Generator network transforms 100-dimensional noise vectors conditioned on class labels into realistic 64×64 RGB plant disease images
+   - **Discriminator**: 4-layer convolutional network that learns robust 8192-dimensional feature representations while distinguishing real from synthetic images
+   - **Class-Specific Synthesis**: Unlike traditional augmentation, cDCGAN generates novel disease-specific patterns (lesion textures, discoloration patterns, symptom distributions) that capture intra-class variability
+   - **Intelligent Balancing**: Automatically oversample minority classes to minimum threshold (1000 samples), ensuring each disease category has sufficient representation without manual intervention
+
+#### 2. **PILAE for Analytical Weight Computation**
+   - **Feature Extraction**: Leverages pre-trained discriminator's deep features (8192-dim) as compact disease representations, eliminating need for separate feature engineering
+   - **Moore-Penrose Pseudoinverse**: Computes optimal classification weights analytically in closed-form, avoiding iterative backpropagation and achieving 10-100× faster training compared to gradient descent methods
+   - **Non-Iterative Learning**: Single-step weight calculation prevents overfitting and reduces computational overhead, making it suitable for resource-constrained agricultural IoT deployments
+   - **Extreme Accuracy**: Achieves ~100% classification accuracy on balanced PlantVillage dataset (54,305 images, 38 classes)
+
+#### 3. **Robust Validation & Generalization**
+   - **5-Fold Cross-Validation**: Ensures model generalization across different data splits, validating performance consistency
+   - **Balanced Training Strategy**: Synthetic oversampling eliminates class bias, enabling fair evaluation across all disease categories
+   - **Real-World Applicability**: Framework designed for deployment in automated plant disease monitoring systems with minimal computational resources
+
+This integrated approach bridges the gap between data scarcity and high-accuracy classification, providing a practical solution for real-time agricultural disease detection systems.
+
+## 👥 Team
+
+**Group 4 Members:**
+- Raghuram Sekar (CB.SC.U4AIE24247)
+- Aadi Halder (CB.SC.U4AIE24201)
+- Aaditya Paul (CB.SC.U4AIE24202)
+- Rupanshi Sangwan (CB.SC.U4AIE24262)
+
+**Academic Affiliation:** Amrita Vishwa Vidyapeetham  
+**Course:** Mathematics for Computing 4 
+
+## 🎯 Project Outline
+
+This project addresses the critical challenge of plant disease classification in agricultural AI systems. Traditional machine learning approaches struggle with severe class imbalance in real-world datasets. Our solution combines two powerful techniques:
+
+1. **Data Augmentation via Conditional DCGAN**: Generate synthetic, class-specific plant disease images to balance minority classes
+2. **Fast Classification with PILAE**: Use discriminator features for rapid analytical learning without backpropagation
+
+**Primary Goal**: Achieve near-perfect classification accuracy (~100%) on 38 plant disease categories while ensuring robustness through cross-validation.
+
+**Key Innovation**: Leveraging conditional GANs not just for data augmentation, but also as feature extractors for downstream classification tasks.
 
 ## ✨ Key Features
 
@@ -115,7 +162,7 @@ Traditional plant disease classification systems suffer from:
 
 ### PlantVillage Dataset
 
-- **Source**: [PlantVillage Dataset](https://github.com/spMohanty/PlantVillage-Dataset)
+- **Source**: [PlantVillage Dataset](https://www.kaggle.com/datasets/abdallahalidev/plantvillage-dataset/)
 - **Total Images**: 54,305 RGB images
 - **Image Size**: 64×64 pixels (resized)
 - **Classes**: 38 plant disease categories
@@ -148,7 +195,7 @@ Traditional plant disease classification systems suffer from:
 - Maximum: 5,507 images (preserved real data)
 - **Synthetic Generated**: ~14,000 images for minority classes
 
-## 🏗️ Architecture
+## Architecture
 
 ### Conditional Generator
 
@@ -209,13 +256,12 @@ Output: Class Label (0-37)
 - Python 3.8 or higher
 - CUDA-compatible GPU (recommended) or CPU
 - 8GB+ RAM
-- 20GB+ free disk space
 
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/plant-disease-classification.git
-cd plant-disease-classification
+git clone https://github.com/Raghuram-sekar/C4_MFC4_PILAE_DGCAN_Plant-Diseases.git
+cd C4_MFC4_PILAE_DGCAN_Plant-Diseases
 ```
 
 ### Step 2: Create Virtual Environment
@@ -238,7 +284,7 @@ pip install -r requirements.txt
 
 ### Step 4: Download Dataset
 
-1. Download PlantVillage dataset from [Kaggle](https://www.kaggle.com/datasets/emmarex/plantdisease) or [GitHub](https://github.com/spMohanty/PlantVillage-Dataset)
+1. Download PlantVillage dataset from [Kaggle](https://www.kaggle.com/datasets/abdallahalidev/plantvillage-dataset/) or [GitHub](https://github.com/spMohanty/PlantVillage-Dataset)
 2. Extract to `Dataset/color/` directory
 3. Ensure folder structure matches:
    ```
@@ -252,8 +298,9 @@ pip install -r requirements.txt
 
 ## 💻 Usage
 
-### Option 1: Run Jupyter Notebook (Recommended)
+### Option 1: PyTorch Implementation (Recommended for Production)
 
+#### Run Jupyter Notebook
 ```bash
 jupyter notebook notebooks/DCGAN_PILAE_Project_PyTorch.ipynb
 ```
@@ -267,11 +314,45 @@ Execute cells sequentially:
 6. **Cell 11-12**: Train PILAE and evaluate
 7. **Cell 13-14**: K-fold cross-validation
 
-### Option 2: Run Python Scripts
-
-#### Train GAN
+#### Run Python Scripts
 ```bash
+# Train Conditional DCGAN
 python src/train_gan.py
+
+# Train PILAE Classifier
+python src/train_classifier.py
+
+# Verify Robustness
+python src/verify_robustness.py
+```
+
+### Option 2: MATLAB Implementation (Reference/Validation)
+
+For architecture validation and cross-platform verification, we also provide a MATLAB implementation adapted from the base paper's reference code.
+
+#### Quick Start (MATLAB)
+```matlab
+cd matlab_dcgan
+QUICKSTART  % Interactive setup and training
+```
+
+Or run the full pipeline:
+```matlab
+cd matlab_dcgan
+main_plantvillage_dcgan  % Complete workflow
+```
+
+**What it does:**
+1. Downloads and installs MatConvNet
+2. Processes PlantVillage dataset (resize to 64×64)
+3. Trains conditional DCGAN for 38 classes
+4. Generates synthetic images per class
+
+**See detailed guide:** [matlab_dcgan/README_PLANTVILLAGE.md](matlab_dcgan/README_PLANTVILLAGE.md)
+
+**Note:** MATLAB implementation generates synthetic images only. For PILAE classification, use the Python scripts above.
+
+### Option 3: Command-Line Scripts
 ```
 
 #### Train Classifier
@@ -377,6 +458,62 @@ The generated `training_timeline.png` shows GAN improvement over 20 epochs:
 - **Epoch 10-15**: Recognizable leaf patterns
 - **Epoch 20**: Photorealistic disease-specific leaves
 
+## 📝 Updates
+
+### Recent Progress
+- ✅ Implemented Conditional DCGAN architecture with class embeddings
+- ✅ Successfully trained generator and discriminator for 20 epochs
+- ✅ Generated ~14,000 synthetic images for minority classes
+- ✅ Balanced dataset from 152-5507 range to minimum 1000 samples/class
+- ✅ Implemented PILAE classifier using Moore-Penrose pseudoinverse
+- ✅ Achieved ~100% test accuracy on PlantVillage dataset
+- ✅ Validated robustness with 5-fold cross-validation (99.9% ± 0.08%)
+- ✅ Pre-trained models saved and ready for deployment
+
+### Current Status
+- All core functionalities implemented and tested
+- Documentation completed
+- Model weights available in `models/` directory
+- Ready for deployment and further optimization
+
+## ⚠️ Challenges / Issues Faced
+
+### 1. **Mode Collapse in GAN Training**
+- **Issue**: Generator producing similar images for all classes
+- **Solution**: Implemented class conditioning via embedding layers and spatial replication
+
+### 2. **Class Imbalance (36:1 Ratio)**
+- **Issue**: Some classes had only 152 images while others had 5507
+- **Solution**: Targeted synthetic generation for minority classes up to 1000 samples
+
+### 3. **PILAE Overfitting Concerns**
+- **Issue**: Initial accuracy seemed too high (~100%)
+- **Solution**: Rigorous 5-fold cross-validation confirmed robustness (99.9% mean)
+
+### 4. **Feature Extraction Dimension Mismatch**
+- **Issue**: Discriminator output incompatible with PILAE input
+- **Solution**: Extracted 8192-dim features from penultimate layer before final classifier
+
+### 5. **GPU Memory Constraints**
+- **Issue**: Out-of-memory errors during batch processing
+- **Solution**: Reduced batch size from 128 to 64 and implemented gradient checkpointing
+
+### 6. **Dataset Organization**
+- **Issue**: PlantVillage has 3 versions (color, grayscale, segmented)
+- **Solution**: Standardized on color version with proper folder structure validation
+
+## 🚀 Future Plans
+
+### Short-term Goals
+- **Data Split Variations**: Experiment with different train/test splits (70/30, 75/25) to analyze model performance across various data distributions
+- **GAN Architecture Tuning**: Explore alternative convolutional layer configurations beyond the current 512-dimensional, 4×4 parameter setup to optimize synthetic image quality
+- **Hyperparameter Optimization**: Systematic experimentation with different network architectures and training parameters
+
+### Long-term Goals
+- **Research Publication**: Prepare and submit findings to peer-reviewed journals in computer vision and agricultural AI
+- **Web Application Development**: Create an accessible web platform for real-time plant disease diagnosis
+- **Model Deployment**: Package the solution for practical agricultural applications
+
 ## 📦 Requirements
 
 ### Core Dependencies
@@ -460,30 +597,19 @@ We welcome contributions! Here's how you can help:
 - [scikit-learn](https://scikit-learn.org/)
 - [Jupyter](https://jupyter.org/)
 
-## 📄 License
+## 📜 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ```
 MIT License
 
-Copyright (c) 2026 [Your Name]
+Copyright (c) 2026 Group 4 - Amrita Vishwa Vidyapeetham
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction...
 ```
 
-## 👥 Authors
 
-**Raghuram Sekar, Aaditya Paul , Aadi Haldar , Rupanshi Sangwan** 
-
-### Acknowledgments
-- Prof. Sunil Kumar
-- Amrita Vishwa Vidyapeetham for academic support
-- PlantVillage dataset creators
-- PyTorch community
-- All contributors to this project
-
----
 
