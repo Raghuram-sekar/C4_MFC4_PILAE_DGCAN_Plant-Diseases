@@ -730,7 +730,7 @@ Mean:   99.92% (±0.09%)
 - Faster training time
 - Better synthetic image quality
 
-**Recommendation**: Use **Python (PyTorch)** for production; MATLAB for educational purposes.
+**Detailed statistics**: [Project_Report.md](Project_Report.md#swedish-leaf-dataset-description)
 
 ---
 
