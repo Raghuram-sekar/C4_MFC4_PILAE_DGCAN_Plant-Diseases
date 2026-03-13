@@ -240,7 +240,7 @@ The notebook contains interactive data exploration, step-by-step training, and r
 
 ### 3. Custom Fruit Dataset (Self-Collected)
 
-- **Source**: Custom collected dataset
+- **Source**: [Custom collected dataset](https://amritavishwavidyapeetham-my.sharepoint.com/:f:/g/personal/cb_sc_u4aie24247_cb_students_amrita_edu/IgCXk8eGqvsKSIknyO6bCL4iAccGMQp_o8BzkYu9Tytmz0M?e=jr1Qq3)
 - **Total Images**: 302
 - **Classes**: 6 fruit categories (Guava, Lemon, Lychee, Mango)
 - **Image Size**: Variable (resized to 64×64)
@@ -809,6 +809,7 @@ C4_MFC4_PILAE_DGCAN_Plant-Diseases/
 - [PlantVillage on Kaggle](https://www.kaggle.com/datasets/abdallahalidev/plantvillage-dataset)
 - [PlantVillage on GitHub](https://github.com/spMohanty/PlantVillage-Dataset)
 - [Swedish Leaf Dataset](https://www.cvl.isy.liu.se/en/research/datasets/swedish-leaf/)
+- [Custom collected dataset](https://amritavishwavidyapeetham-my.sharepoint.com/:f:/g/personal/cb_sc_u4aie24247_cb_students_amrita_edu/IgCXk8eGqvsKSIknyO6bCL4iAccGMQp_o8BzkYu9Tytmz0M?e=jr1Qq3)
 
 ### Tools & Frameworks
 
