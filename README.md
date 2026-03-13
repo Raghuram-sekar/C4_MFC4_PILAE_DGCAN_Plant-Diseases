@@ -43,7 +43,7 @@
 
 **Title**: Plant Disease Classification Using Conditional DCGAN and Pseudoinverse Learning Autoencoder (PILAE)
 
-**Authors**: Raghuram Sekar • Aaditya Paul • Aadi Haldar • Rupanshi Sangwan
+**Authors**: Raghuram Sekar • Aaditya Paul • Rupanshi Sangwan • Aadi Haldar 
 
 **Institution**: Amrita Vishwa Vidyapeetham  
 **Course**: Machine Foundation Course (MFC) Project  
@@ -852,7 +852,7 @@ SOFTWARE.
 
 ## 👥 Authors
 
-**Raghuram Sekar** • **Aaditya Paul** • **Aadi Haldar** • **Rupanshi Sangwan**
+**Raghuram Sekar** • **Aaditya Paul** • **Rupanshi Sangwan** • **Aadi Haldar** 
 
 Amrita Vishwa Vidyapeetham, 4th Semester (Spring 2024-25)
 
